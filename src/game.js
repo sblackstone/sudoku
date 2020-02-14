@@ -26,7 +26,7 @@ const Marks = function(props) {
 }
 
 const GameCell = function(props) {
-  if (props.cell.value) {
+  if (props.cell.value > 0) {
     return props.cell.value;
   } else {
     return (
