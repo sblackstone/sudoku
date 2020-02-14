@@ -1,24 +1,24 @@
 import React from 'react';
-import Board from './board';
+import Board from './board.mjs';
 import './board.scss';
 const Marks = function(props) {
     return(
       <table className="marksTable">
         <tbody>
           <tr>
-            <td>{props.marks[0] === 1 ? "1" : ""}</td>
-            <td>{props.marks[1] === 1 ? "2" : ""}</td>
-            <td>{props.marks[2] === 1 ? "3" : ""}</td>
+            <td>{props.marks[0] ? "1" : ""}</td>
+            <td>{props.marks[1] ? "2" : ""}</td>
+            <td>{props.marks[2] ? "3" : ""}</td>
           </tr>
           <tr>
-            <td>{props.marks[3] === 1 ? "4" : ""}</td>
-            <td>{props.marks[4] === 1 ? "5" : ""}</td>
-            <td>{props.marks[5] === 1 ? "6" : ""}</td>
+            <td>{props.marks[3] ? "4" : ""}</td>
+            <td>{props.marks[4] ? "5" : ""}</td>
+            <td>{props.marks[5] ? "6" : ""}</td>
           </tr>
           <tr>
-            <td>{props.marks[6] === 1 ? "7" : ""}</td>
-            <td>{props.marks[7] === 1 ? "8" : ""}</td>
-            <td>{props.marks[8] === 1 ? "9" : ""}</td>
+            <td>{props.marks[6] ? "7" : ""}</td>
+            <td>{props.marks[7] ? "8" : ""}</td>
+            <td>{props.marks[8] ? "9" : ""}</td>
           </tr>
         </tbody>
       </table>

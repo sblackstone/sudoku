@@ -1,7 +1,6 @@
 import { Board } from '../src/board';
 import { Cell  } from '../src/cell';
-
-var assert = require('assert');
+import { assert } from 'assert';
 
 describe('Cell', function() {
 

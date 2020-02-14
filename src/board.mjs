@@ -6,6 +6,12 @@ export class Board {
   get rows() {
     return this.__rows;
   }
+
+  boxNumberForSquare(i,j) {
+    return Math.floor(i / 3) * 3 + Math.floor(j /3);
+  }
+
+
   dump() {
     for (let i = 0; i < 9; i++) {
       const row = [];
@@ -16,12 +22,38 @@ export class Board {
     }
     console.log("***************************");
   }
+
+
+  createSquareCache() {
+    this.squaresCache = [
+      [0,0,0, 1,1,1, 2,2,2],
+      [0,0,0, 1,1,1, 2,2,2],
+      [0,0,0, 1,1,1, 2,2,2],
+      [3,3,3, 4,4,4, 5,5,5],
+      [3,3,3, 4,4,4, 5,5,5],
+      [3,3,3, 4,4,4, 5,5,5],
+      [6,6,6, 7,7,7, 8,8,8],
+      [6,6,6, 7,7,7, 8,8,8],
+      [6,6,6, 7,7,7, 8,8,8],
+    ];
+  }
+
+  createCoordsCache(i) {
+    this.coordsCache = new Array(10).fill(0).map(x => []);
+    for (let i = 0; i < 9; i++) {
+      for (let j = 0; j < 9; j++) {
+        const sq = this.squaresCache[i][j];
+        this.coordsCache[sq].push([i,j]);
+      }
+    }
+  }
+
   createRows() {
     this.__rows = [];
     for (let i = 0; i < 9; i++) {
       const row = [];
       for (let j = 0; j < 9; j++) {
-        row.push(new Cell());
+        row.push(new Cell(`${i}${j} ${this.squaresCache[i][j]}`));
       }
       this.__rows.push(row);
     }
@@ -36,6 +68,8 @@ export class Board {
   }
 
   constructor() {
+    this.createSquareCache();
+    this.createCoordsCache();
     this.createRows();
   }
 
