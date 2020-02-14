@@ -36,19 +36,17 @@ const GameCell = function(props) {
 }
 
 const GameRow = function(props) {
-  let i = -1;
+  let i = 0;
   return props.row.map((cell)=> {
-    i++;
     return (
-      <td className={`cell col${(i)}`} key={`GameCell${i}`}><GameCell cell={cell} /></td>
+      <td className={`cell col${(i++)}`} key={`GameCell${i}`}><GameCell cell={cell} /></td>
     )
   });
 }
 
 const GameRows = function(props) {
-  let i = -1;
+  let i = 0;
   return props.board.rows.map((row) => {
-    i++;
     return (
       <tr className={`row${i++}`} key={`GameRowTr${i}`}>
         <GameRow row={row} />
