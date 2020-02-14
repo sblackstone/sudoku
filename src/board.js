@@ -3,6 +3,9 @@ import { Cell } from './cell';
 
 export class Board {
 
+  get rows() {
+    return this.__rows;
+  }
   dump() {
     for (let i = 0; i < 9; i++) {
       const row = [];
