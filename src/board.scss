@@ -5,6 +5,7 @@
   height: 50px;
   padding: 10px;
   font-size: 35px;
+  text-align: center;
 }
 
 .row5, .row2 {
@@ -21,7 +22,9 @@
 .board {
   border-collapse: collapse;
   border: 3px solid black;
-  margin: 10vh auto;
+  height: 80vmin;
+  width: 80vmin;
+  margin: 10vmin auto;
 }
 
 
