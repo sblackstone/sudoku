@@ -3,6 +3,16 @@ import { Cell } from './cell';
 
 export class Board {
 
+  dump() {
+    for (let i = 0; i < 9; i++) {
+      const row = [];
+      for (let j = 0; j < 9; j++) {
+        row.push(this.getVal(i,j));
+      }
+      console.log(row.join(" "));
+    }
+    console.log("***************************");
+  }
   createRows() {
     this.__rows = [];
     for (let i = 0; i < 9; i++) {
@@ -25,6 +35,26 @@ export class Board {
   constructor() {
     this.createRows();
   }
+
+  valueInRow(i, value) {
+    for (let j = 0; j < 9; j++) {
+      if (this.getVal(i,j) === value) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  valueInCol(j, value) {
+    for (let i = 0; i < 9; i++) {
+      if (this.getVal(i,j) === value) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+
 
 }
 

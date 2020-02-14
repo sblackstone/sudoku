@@ -9,7 +9,7 @@ describe('Cell', function() {
 
     it('should work without value', function() {
       const c = new Cell();
-      assert.equal(c.value, null);
+      assert.equal(c.value, -1);
 
     });
 
@@ -44,7 +44,7 @@ describe('Board', function() {
       const b = new Board();
       for (let i = 0; i < 9; i++) {
         for (let j = 0; j < 9; j++) {
-            assert.equal(b.getVal(i,j), null);
+            assert.equal(b.getVal(i,j), -1);
         }
       }
     });
@@ -57,5 +57,28 @@ describe('Board', function() {
 
 
   });
+
+  it('should know if a value is in a row', function() {
+    const b = new Board();
+    for (let j = 0; j < 9; j++) {
+      assert(!b.valueInRow(0, 9));
+      b.setVal(0,j,9);
+      assert(b.valueInRow(0, 9));
+      b.setVal(0,j,-1);
+    }
+  });
+
+  it('should know if a value is in a col', function() {
+    const b = new Board();
+    for (let i = 0; i < 9; i++) {
+      assert(!b.valueInCol(0, 9));
+      b.setVal(i,0,9);
+      b.dump();
+      assert(b.valueInCol(0, 9));
+      b.setVal(i,0,-1);
+    }
+  });
+
+
 
 });

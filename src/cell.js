@@ -1,7 +1,7 @@
 export class Cell {
 
   constructor(value) {
-    this.__value = value || null;
+    this.__value = value || -1;
     this.__marks = [true, true, true, true, true, true, true, true, true];
   }
 
