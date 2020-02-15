@@ -104,7 +104,6 @@ export class Board {
           const boxNum = boxNumbers[i][j];
           const val = !(this.valueInRow(i, k) || this.valueInCol(j, k) || this.valueInBox(boxNum, k));
           this.rows[i][j].setMark(k, val);
-          console.log(i,j,k,val);
         }
       }
     }

@@ -10,7 +10,7 @@ export class Cell {
   get marks()  { return this.__marks;  };
 
   setMark(i, v) {
-    console.log(`Set Mark ${i} ${v}`);
+    //console.log(`Set Mark ${i} ${v}`);
     this.__marks[i] = v;
   }
 
