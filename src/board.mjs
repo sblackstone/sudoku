@@ -70,6 +70,7 @@ export class Board {
   }
 
   constructor() {
+    window.board = this;
     this.createRows();
     this.setExample();
   }
@@ -81,6 +82,17 @@ export class Board {
       }
     }
     return false;
+  }
+
+  valueinBox(n, value) {
+    const coords = invSquaresCache[n];
+    for (let i = 0; i < 9; i++) {
+      if (this.getVal(...coords[i]) === value ) {
+        return true;
+      }
+    }
+    return false;
+
   }
 
   setExample() {
