@@ -1,4 +1,48 @@
 
+.board {
+  display: flex;
+  border: 3px solid black;
+  margin: 5vmin auto;
+  height: 90vmin;
+  width: 90vmin;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.cell-value {
+  line-height: 10vmin;
+}
+
+.cell {
+  box-sizing: border-box;
+  border: 1px solid #bbb;
+  width:  10vmin;
+  height: 10vmin;
+  text-align: center;
+  &.c3, &.c6 {
+    border-left: 2px solid black;
+  }
+  &.r2, &.r5 {
+    border-bottom: 2px solid black;
+  }
+
+}
+
+
+.marksTable {
+  width: 8vmin;
+  height: 8vmin;
+  margin-top: 1vmin;
+  margin-left: 1vmin;
+  color: #aaa;
+  font-size: 12px;
+  td {
+    border: 0px solid #aaa;    
+  }
+  border-collapse: collapse;
+}
+
+/*
 .cell {
   border: 1px solid #aaa;
   width: 50px;
@@ -35,3 +79,4 @@
   font-size: 12px;
   border-collapse: collapse;
 }
+*/

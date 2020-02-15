@@ -54,6 +54,7 @@ export class Board {
       const row = [];
       for (let j = 0; j < 9; j++) {
         //row.push(new Cell(`${i}${j} ${squaresCache[i][j]}`));
+        //row.push(new Cell(`${i}${j}`));
         row.push(new Cell());
       }
       this.__rows.push(row);

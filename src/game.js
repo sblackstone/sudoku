@@ -25,9 +25,9 @@ const Marks = function(props) {
     )
 }
 
-const GameCell = function(props) {
-  if (props.cell.value > 0) {
-    return props.cell.value;
+const GameCellValue = function(props) {
+  if (props.cell.value !== -1) {
+    return (<span className="cell-value">props.cell.value</span>);
   } else {
     return (
       <Marks marks={props.cell.marks} />
@@ -35,25 +35,24 @@ const GameCell = function(props) {
   }
 }
 
-const GameRow = function(props) {
-  let i = 0;
-  return props.row.map((cell)=> {
-    return (
-      <td className={`cell col${(i++)}`} key={`GameCell${i}`}><GameCell cell={cell} /></td>
-    )
-  });
+const GameCells = function(props) {
+  const ret = [];
+  for (let i = 0; i < 9; i++) {
+    for (let j = 0; j < 9; j++) {
+      ret.push(<GameCell cell={props.board.rows[i][j]} row={i} col={j} />);
+    }
+  }
+  return ret;
 }
 
-const GameRows = function(props) {
-  let i = 0;
-  return props.board.rows.map((row) => {
-    return (
-      <tr className={`row${i++}`} key={`GameRowTr${i}`}>
-        <GameRow row={row} />
-      </tr>
-    )
-  });
+const GameCell = function(props) {
+  return (
+    <div className={`cell r${props.row} c${props.col}`}>
+      <GameCellValue {...props} />
+    </div>
+  )
 }
+
 
 class Game extends React.Component {
   constructor(props) {
@@ -67,11 +66,9 @@ class Game extends React.Component {
 
   render() {
     return (
-      <table className="board">
-        <tbody>
-          <GameRows board={this.state.board} />
-        </tbody>
-      </table>
+      <div className="board">
+        <GameCells board={this.state.board} />
+      </div>
 
     )
   }
