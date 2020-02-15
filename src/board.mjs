@@ -69,6 +69,10 @@ export class Board {
     this.__rows[i][j].value = v;
   }
 
+  export() {
+    return this.rows.map(i => i.map(j => j.export() ));
+  }
+
   constructor() {
     window.board = this;
     this.createRows();

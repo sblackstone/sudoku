@@ -39,7 +39,7 @@ const GameCells = function(props) {
   const ret = [];
   for (let i = 0; i < 9; i++) {
     for (let j = 0; j < 9; j++) {
-      ret.push(<GameCell key={`${i}${j}`} cell={props.board.rows[i][j]} row={i} col={j} />);
+      ret.push(<GameCell key={`${i}${j}`} cell={props.board[i][j]} row={i} col={j} />);
     }
   }
   return ret;
@@ -67,7 +67,7 @@ class Game extends React.Component {
   render() {
     return (
       <div className="board">
-        <GameCells board={this.state.board} />
+        <GameCells board={this.state.board.export()} />
       </div>
 
     )

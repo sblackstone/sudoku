@@ -9,6 +9,10 @@ export class Cell {
   set value(v) { this.__value = v;     };
   get marks()  { return this.__marks;  };
 
+  export() {
+    return { value: this.value, marks: this.marks };
+  }
+
   setMark(i, v) {
     //console.log(`Set Mark ${i} ${v}`);
     this.__marks[i] = v;
