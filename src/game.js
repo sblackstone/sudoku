@@ -6,19 +6,19 @@ const Marks = function(props) {
       <table className="marksTable">
         <tbody>
           <tr>
-            <td>{props.marks[0] ? "1" : ""}</td>
-            <td>{props.marks[1] ? "2" : ""}</td>
-            <td>{props.marks[2] ? "3" : ""}</td>
+            <td>{props.marks[1] ? "1" : ""}</td>
+            <td>{props.marks[2] ? "2" : ""}</td>
+            <td>{props.marks[3] ? "3" : ""}</td>
           </tr>
           <tr>
-            <td>{props.marks[3] ? "4" : ""}</td>
-            <td>{props.marks[4] ? "5" : ""}</td>
-            <td>{props.marks[5] ? "6" : ""}</td>
+            <td>{props.marks[4] ? "4" : ""}</td>
+            <td>{props.marks[5] ? "5" : ""}</td>
+            <td>{props.marks[6] ? "6" : ""}</td>
           </tr>
           <tr>
-            <td>{props.marks[6] ? "7" : ""}</td>
-            <td>{props.marks[7] ? "8" : ""}</td>
-            <td>{props.marks[8] ? "9" : ""}</td>
+            <td>{props.marks[7] ? "7" : ""}</td>
+            <td>{props.marks[8] ? "8" : ""}</td>
+            <td>{props.marks[9] ? "9" : ""}</td>
           </tr>
         </tbody>
       </table>
@@ -39,7 +39,7 @@ const GameCells = function(props) {
   const ret = [];
   for (let i = 0; i < 9; i++) {
     for (let j = 0; j < 9; j++) {
-      ret.push(<GameCell cell={props.board.rows[i][j]} row={i} col={j} />);
+      ret.push(<GameCell key={`${i}${j}`} cell={props.board.rows[i][j]} row={i} col={j} />);
     }
   }
   return ret;

@@ -1,6 +1,6 @@
 import { Cell } from './cell';
 
-const squaresCache = [
+const boxNumbers = [
   [0,0,0, 1,1,1, 2,2,2],
   [0,0,0, 1,1,1, 2,2,2],
   [0,0,0, 1,1,1, 2,2,2],
@@ -73,6 +73,7 @@ export class Board {
     window.board = this;
     this.createRows();
     this.setExample();
+    this.autoNotate();
   }
 
   valueInRow(i, value) {
@@ -84,7 +85,7 @@ export class Board {
     return false;
   }
 
-  valueinBox(n, value) {
+  valueInBox(n, value) {
     const coords = invSquaresCache[n];
     for (let i = 0; i < 9; i++) {
       if (this.getVal(...coords[i]) === value ) {
@@ -93,6 +94,20 @@ export class Board {
     }
     return false;
 
+  }
+
+  autoNotate() {
+    for (let i = 0; i < 9; i++) {
+      for (let j = 0; j < 9; j++) {
+        for (let k = 1; k < 10; k++){
+          const cell = this.rows[i][j];
+          const boxNum = boxNumbers[i][j];
+          const val = !(this.valueInRow(i, k) || this.valueInCol(j, k) || this.valueInBox(boxNum, k));
+          this.rows[i][j].setMark(k, val);
+          console.log(i,j,k,val);
+        }
+      }
+    }
   }
 
   setExample() {

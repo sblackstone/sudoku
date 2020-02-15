@@ -2,7 +2,7 @@ export class Cell {
 
   constructor(value) {
     this.__value = value || -1;
-    this.__marks = [true, true, true, true, true, true, true, true, true];
+    this.__marks = [true, true, true, true, true, true, true, true, true, true];
   }
 
   get value()  { return this.__value;  };
@@ -10,6 +10,7 @@ export class Cell {
   get marks()  { return this.__marks;  };
 
   setMark(i, v) {
+    console.log(`Set Mark ${i} ${v}`);
     this.__marks[i] = v;
   }
 
