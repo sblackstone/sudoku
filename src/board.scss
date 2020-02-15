@@ -11,6 +11,7 @@
 
 .cell-value {
   line-height: 10vmin;
+  font-size: 4vmin;
 }
 
 .cell {
@@ -37,7 +38,7 @@
   color: #aaa;
   font-size: 12px;
   td {
-    border: 0px solid #aaa;    
+    border: 0px solid #aaa;
   }
   border-collapse: collapse;
 }

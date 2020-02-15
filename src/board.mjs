@@ -71,6 +71,7 @@ export class Board {
 
   constructor() {
     this.createRows();
+    this.setExample();
   }
 
   valueInRow(i, value) {
@@ -80,6 +81,39 @@ export class Board {
       }
     }
     return false;
+  }
+
+  setExample() {
+    this.setVal(0,2,6);
+    this.setVal(0,4,1);
+    this.setVal(1,1,2);
+    this.setVal(1,5,9);
+    this.setVal(2,0,5);
+    this.setVal(2,1,7);
+
+    this.setVal(3,2,1);
+    this.setVal(3,3,2);
+    this.setVal(3,4,6);
+
+    this.setVal(3,7,4);
+    this.setVal(3,8,8);
+
+    this.setVal(4,5,3);
+    this.setVal(4,7,7);
+
+
+    this.setVal(6,0,6);
+    this.setVal(6,4,4);
+    this.setVal(6,5,1);
+    this.setVal(6,7,8);
+
+    this.setVal(7,3,3);
+    this.setVal(7,8,2);
+
+    this.setVal(8,1,3);
+    this.setVal(8,2,4);
+    this.setVal(8,4,9);
+    this.setVal(8,8,6);
   }
 
   valueInCol(j, value) {

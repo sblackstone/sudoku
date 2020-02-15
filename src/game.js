@@ -27,7 +27,7 @@ const Marks = function(props) {
 
 const GameCellValue = function(props) {
   if (props.cell.value !== -1) {
-    return (<span className="cell-value">props.cell.value</span>);
+    return (<span className="cell-value">{props.cell.value}</span>);
   } else {
     return (
       <Marks marks={props.cell.marks} />
