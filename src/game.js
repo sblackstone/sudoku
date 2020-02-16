@@ -36,7 +36,7 @@ const GameCells = function(props) {
   const ret = [];
   for (let i = 0; i < 9; i++) {
     for (let j = 0; j < 9; j++) {
-      ret.push(<GameCell onSquareClick={()=> { props.onSquareClick(i,j); }} key={`${i}${j}`} cell={props.board[i][j]} />);
+      ret.push(<GameCell onSquareClick={()=> { props.onSquareClick(i,j); }} key={`${i}${j}`} cell={props.board[i][j]} i={i} j={j}/>);
     }
   }
   return ret;
@@ -44,7 +44,7 @@ const GameCells = function(props) {
 
 const GameCell = function(props) {
   return (
-    <div onClick={props.onSquareClick} className={`cell r${props.row} c${props.col}`}>
+    <div onClick={props.onSquareClick} className={`cell r${props.i} c${props.j}`}>
       <GameCellValue {...props} />
     </div>
   )
