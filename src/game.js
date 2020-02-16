@@ -59,19 +59,27 @@ const GameCell = function(props) {
 class Game extends React.Component {
   constructor(props) {
     super(props);
+    this.board = new Board();
 
     this.state = {
-      board: new Board(),
       selectedSquare: [-1,-1],
       mode: "setMarks", // vs setValues
     }
+    this.state.exportBoard = this.board.export();
 
+  }
+
+  updateStateBoard() {
+    this.board.autoNotate();
+    this.setState({
+      exportBoard: this.board.export()
+    })
   }
 
   onModeToggleClick(e) {
     console.log("onModeToggleClick");
     this.setState({
-      mode: this.state.mode == "setMarks" ? "setVals" : "setMarks"
+      mode: this.state.mode === "setMarks" ? "setVals" : "setMarks"
     });
   }
   onSquareClick(i,j) {
@@ -83,15 +91,30 @@ class Game extends React.Component {
     console.log(`onSquareClick(${i},${j})`);
   }
 
-  onNumberButtonClick(i) {
-    console.log(`onNumberButtonClick ${i}`);
+  onNumberButtonClick(number) {
+    console.log(`onNumberButtonClick ${number}`);
+
+    const targetSq = this.state.selectedSquare;
+
+    if (this.state.mode === "setMarks") {
+
+      console.log('setMarks');
+    }
+
+    if (this.state.mode === "setVals") {
+      this.board.setVal(targetSq[0], targetSq[1], parseInt(number));
+      this.updateStateBoard();
+      console.log('setVals');
+    }
+
+
   }
 
   render() {
     return (
       <div className="game">
         <div className="board">
-          <GameCells selectedSquare={this.state.selectedSquare} onSquareClick={this.onSquareClick.bind(this)} board={this.state.board.export()} />
+          <GameCells selectedSquare={this.state.selectedSquare} onSquareClick={this.onSquareClick.bind(this)} board={this.state.exportBoard} />
         </div>
         <div className="controls">
           <Controls mode={this.state.mode} onNumberButtonClick={this.onNumberButtonClick.bind(this)} onModeToggleClick={this.onModeToggleClick.bind(this)} />
