@@ -48,6 +48,10 @@
 
 }
 
+.selectedSquare {
+  background-color: yellow;
+}
+
 .marks {
   display: flex;
   flex-direction: rows;

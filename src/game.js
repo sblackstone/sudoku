@@ -36,15 +36,20 @@ const GameCells = function(props) {
   const ret = [];
   for (let i = 0; i < 9; i++) {
     for (let j = 0; j < 9; j++) {
-      ret.push(<GameCell onSquareClick={()=> { props.onSquareClick(i,j); }} key={`${i}${j}`} cell={props.board[i][j]} i={i} j={j}/>);
+      const isSelected = props.selectedSquare[0] === i && props.selectedSquare[1] === j;
+      ret.push(<GameCell onSquareClick={()=> { props.onSquareClick(i,j); }} isSelected={isSelected} key={`${i}${j}`} cell={props.board[i][j]} i={i} j={j}/>);
     }
   }
   return ret;
 }
 
 const GameCell = function(props) {
+  let selectedClass = "";
+  if (props.isSelected) {
+    selectedClass="selectedSquare";
+  }
   return (
-    <div onClick={props.onSquareClick} className={`cell r${props.i} c${props.j}`}>
+    <div onClick={props.onSquareClick} className={`cell r${props.i} c${props.j} ${selectedClass}`}>
       <GameCellValue {...props} />
     </div>
   )
@@ -56,15 +61,25 @@ class Game extends React.Component {
     super(props);
 
     this.state = {
-      board: new Board()
+      board: new Board(),
+      selectedSquare: [-1,-1],
+      mode: "setMarks", // vs setValues
     }
 
   }
 
   onModeToggleClick(e) {
     console.log("onModeToggleClick");
+    this.setState({
+      mode: this.state.mode == "setMarks" ? "setVals" : "setMarks"
+    });
   }
   onSquareClick(i,j) {
+
+    this.setState({
+      selectedSquare: [i,j]
+    });
+
     console.log(`onSquareClick(${i},${j})`);
   }
 
@@ -76,10 +91,10 @@ class Game extends React.Component {
     return (
       <div className="game">
         <div className="board">
-          <GameCells onSquareClick={this.onSquareClick.bind(this)} board={this.state.board.export()} />
+          <GameCells selectedSquare={this.state.selectedSquare} onSquareClick={this.onSquareClick.bind(this)} board={this.state.board.export()} />
         </div>
         <div className="controls">
-          <Controls onNumberButtonClick={this.onNumberButtonClick.bind(this)} onModeToggleClick={this.onModeToggleClick.bind(this)} />
+          <Controls mode={this.state.mode} onNumberButtonClick={this.onNumberButtonClick.bind(this)} onModeToggleClick={this.onModeToggleClick.bind(this)} />
         </div>
       </div>
     )

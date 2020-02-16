@@ -25,6 +25,7 @@ export class Controls extends React.Component {
     return (<div>
              <NumberButtons {...this.props} />
              <ModeToggle {...this.props} />
+             <div className="modeDisplay">{this.props.mode}</div>
             </div>);
   }
 
