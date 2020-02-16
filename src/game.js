@@ -61,8 +61,15 @@ class Game extends React.Component {
 
   }
 
+  onModeToggleClick(e) {
+    console.log("onModeToggleClick");
+  }
   onSquareClick(i,j) {
-    console.log(i,j);
+    console.log(`onSquareClick(${i},${j})`);
+  }
+
+  onNumberButtonClick(i) {
+    console.log(`onNumberButtonClick ${i}`);
   }
 
   render() {
@@ -72,7 +79,7 @@ class Game extends React.Component {
           <GameCells onSquareClick={this.onSquareClick.bind(this)} board={this.state.board.export()} />
         </div>
         <div className="controls">
-          <Controls />
+          <Controls onNumberButtonClick={this.onNumberButtonClick.bind(this)} onModeToggleClick={this.onModeToggleClick.bind(this)} />
         </div>
       </div>
     )
