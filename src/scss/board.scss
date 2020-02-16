@@ -1,46 +1,68 @@
 
 .board {
   display: flex;
-  border: 3px solid black;
-  margin: 5vmin auto;
-  height: 90vmin;
-  width: 90vmin;
+  box-sizing: border-box;
+  //border: 3px solid black;
+  height: 81vmin;
+  width: 81vmin;
   flex-direction: row;
   flex-wrap: wrap;
 }
 
 .cell-value {
-  line-height: 10vmin;
+  line-height: 9vmin;
   font-size: 4vmin;
 }
 
 .cell {
   box-sizing: border-box;
   border: 1px solid #bbb;
-  width:  10vmin;
-  height: 10vmin;
+  width:  9vmin;
+  height: 9vmin;
+  margin: 0;
   text-align: center;
+  &.r0 {
+    border-top: 1px solid #000;
+  }
+
+  &.c0 {
+    border-left: 1px solid #000;
+  }
+
+  &.c8 {
+    border-right: 1px solid #000;
+  }
+  &.r8 {
+    border-bottom: 1px solid #000;
+  }
+
+
   &.c3, &.c6 {
+    box-sizing: border-box;
     border-left: 2px solid black;
   }
   &.r2, &.r5 {
     border-bottom: 2px solid black;
+    box-sizing: border-box;
   }
 
 }
 
-
-.marksTable {
-  width: 8vmin;
-  height: 8vmin;
-  margin-top: 1vmin;
-  margin-left: 1vmin;
+.marks {
+  display: flex;
+  flex-direction: rows;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  width: 9vmin;
+  height: 9vmin;
   color: #aaa;
-  font-size: 12px;
-  td {
-    border: 0px solid #aaa;
+  font-size: 15px;
+  .mark {
+    box-sizing: border-box;
+    width: 3vmin;
+    height: 3vmin;
+    line-height: 3vmin;
   }
-  border-collapse: collapse;
 }
 
 /*

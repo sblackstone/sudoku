@@ -104,7 +104,6 @@ export class Board {
     for (let i = 0; i < 9; i++) {
       for (let j = 0; j < 9; j++) {
         for (let k = 1; k < 10; k++){
-          const cell = this.rows[i][j];
           const boxNum = boxNumbers[i][j];
           const val = !(this.valueInRow(i, k) || this.valueInCol(j, k) || this.valueInBox(boxNum, k));
           this.rows[i][j].setMark(k, val);

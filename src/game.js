@@ -1,27 +1,24 @@
 import React from 'react';
 import Board from './board.mjs';
-import './board.scss';
+import Controls from './controls.mjs';
+import './scss/board.scss';
+import './scss/game.scss';
+
 const Marks = function(props) {
     return(
-      <table className="marksTable">
-        <tbody>
-          <tr>
-            <td>{props.marks[1] ? "1" : ""}</td>
-            <td>{props.marks[2] ? "2" : ""}</td>
-            <td>{props.marks[3] ? "3" : ""}</td>
-          </tr>
-          <tr>
-            <td>{props.marks[4] ? "4" : ""}</td>
-            <td>{props.marks[5] ? "5" : ""}</td>
-            <td>{props.marks[6] ? "6" : ""}</td>
-          </tr>
-          <tr>
-            <td>{props.marks[7] ? "7" : ""}</td>
-            <td>{props.marks[8] ? "8" : ""}</td>
-            <td>{props.marks[9] ? "9" : ""}</td>
-          </tr>
-        </tbody>
-      </table>
+      <div className="marks">
+        <div className="mark">{props.marks[1] ? "1" : ""}</div>
+        <div className="mark">{props.marks[2] ? "2" : ""}</div>
+        <div className="mark">{props.marks[3] ? "3" : ""}</div>
+
+        <div className="mark">{props.marks[4] ? "4" : ""}</div>
+        <div className="mark">{props.marks[5] ? "5" : ""}</div>
+        <div className="mark">{props.marks[6] ? "6" : ""}</div>
+
+        <div className="mark">{props.marks[7] ? "7" : ""}</div>
+        <div className="mark">{props.marks[8] ? "8" : ""}</div>
+        <div className="mark">{props.marks[9] ? "9" : ""}</div>
+      </div>
     )
 }
 
@@ -66,10 +63,14 @@ class Game extends React.Component {
 
   render() {
     return (
-      <div className="board">
-        <GameCells board={this.state.board.export()} />
+      <div className="game">
+        <div className="board">
+          <GameCells board={this.state.board.export()} />
+        </div>
+        <div className="controls">
+          <Controls />
+        </div>
       </div>
-
     )
   }
 
