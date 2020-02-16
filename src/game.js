@@ -36,7 +36,7 @@ const GameCells = function(props) {
   const ret = [];
   for (let i = 0; i < 9; i++) {
     for (let j = 0; j < 9; j++) {
-      ret.push(<GameCell key={`${i}${j}`} cell={props.board[i][j]} row={i} col={j} />);
+      ret.push(<GameCell onSquareClick={()=> { props.onSquareClick(i,j); }} key={`${i}${j}`} cell={props.board[i][j]} />);
     }
   }
   return ret;
@@ -44,7 +44,7 @@ const GameCells = function(props) {
 
 const GameCell = function(props) {
   return (
-    <div className={`cell r${props.row} c${props.col}`}>
+    <div onClick={props.onSquareClick} className={`cell r${props.row} c${props.col}`}>
       <GameCellValue {...props} />
     </div>
   )
@@ -61,11 +61,15 @@ class Game extends React.Component {
 
   }
 
+  onSquareClick(i,j) {
+    console.log(i,j);
+  }
+
   render() {
     return (
       <div className="game">
         <div className="board">
-          <GameCells board={this.state.board.export()} />
+          <GameCells onSquareClick={this.onSquareClick.bind(this)} board={this.state.board.export()} />
         </div>
         <div className="controls">
           <Controls />
