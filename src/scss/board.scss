@@ -49,7 +49,14 @@
 }
 
 .selectedSquare {
-  background-color: yellow;
+  background-color: rgba(0,0,200, 0.6);
+  border: 1px solid rgba(0,0,200, 0.6);
+}
+
+.relatedSquare {
+  background-color: rgba(0,0,200, 0.1);
+  border: 1px solid rgba(0,0,200, 0.1);
+
 }
 
 .marks {

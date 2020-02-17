@@ -69,6 +69,14 @@ export class Board {
     this.__rows[i][j].value = v;
   }
 
+  getMark(i,j,k) {
+    return this.__rows[i][j].getMark(k);
+  }
+
+  setMark(i,j,k,v) {
+    return this.__rows[i][j].setMark(k,v);
+  }
+
   export() {
     return this.rows.map(i => i.map(j => j.export() ));
   }
@@ -101,6 +109,7 @@ export class Board {
   }
 
   autoNotate() {
+    console.log("autoNotate");
     for (let i = 0; i < 9; i++) {
       for (let j = 0; j < 9; j++) {
         for (let k = 1; k < 10; k++){

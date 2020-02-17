@@ -37,7 +37,7 @@ const GameCells = function(props) {
   for (let i = 0; i < 9; i++) {
     for (let j = 0; j < 9; j++) {
       const isSelected = props.selectedSquare[0] === i && props.selectedSquare[1] === j;
-      ret.push(<GameCell onSquareClick={()=> { props.onSquareClick(i,j); }} isSelected={isSelected} key={`${i}${j}`} cell={props.board[i][j]} i={i} j={j}/>);
+      ret.push(<GameCell onSquareClick={()=> { props.onSquareClick(i,j); }} isSelected={isSelected} key={`${i}${j}`} cell={props.board[i][j]} i={i} j={j} selectedSquare={props.selectedSquare} selectedBox={props.selectedBox}/>);
     }
   }
   return ret;
@@ -45,11 +45,30 @@ const GameCells = function(props) {
 
 const GameCell = function(props) {
   let selectedClass = "";
+  let sameBoxClass  = "";
+
   if (props.isSelected) {
     selectedClass="selectedSquare";
+  } else {
+    if (props.i == props.selectedSquare[0]) {
+      sameBoxClass = "relatedSquare";
+    }
+    if (props.j == props.selectedSquare[1]) {
+      sameBoxClass = "relatedSquare";
+    }
+  
+    const box =  Math.floor(props.i / 3) * 3 + Math.floor(props.j /3);
+  
+    if (box === props.selectedBox) {
+      sameBoxClass = "relatedSquare";    
+    }
+    
   }
+
+
+
   return (
-    <div onClick={props.onSquareClick} className={`cell r${props.i} c${props.j} ${selectedClass}`}>
+    <div onClick={props.onSquareClick} className={`cell r${props.i} c${props.j} ${selectedClass} ${sameBoxClass}`}>
       <GameCellValue {...props} />
     </div>
   )
@@ -59,18 +78,21 @@ const GameCell = function(props) {
 class Game extends React.Component {
   constructor(props) {
     super(props);
+    window.game = this;
     this.board = new Board();
 
     this.state = {
       selectedSquare: [-1,-1],
       mode: "setMarks", // vs setValues
+      exportBoard:  this.board.export(),
+      selectedBox: -1
     }
-    this.state.exportBoard = this.board.export();
 
   }
 
   updateStateBoard() {
-    this.board.autoNotate();
+    //this.board.autoNotate();
+    
     this.setState({
       exportBoard: this.board.export()
     })
@@ -82,29 +104,38 @@ class Game extends React.Component {
       mode: this.state.mode === "setMarks" ? "setVals" : "setMarks"
     });
   }
+
   onSquareClick(i,j) {
-
+    const newSq = [i,j];
+    const newBox = this.board.boxNumberForSquare(i,j);
     this.setState({
-      selectedSquare: [i,j]
+      selectedSquare: [i,j],
+      selectedBox: newBox
     });
-
-    console.log(`onSquareClick(${i},${j})`);
   }
 
   onNumberButtonClick(number) {
-    console.log(`onNumberButtonClick ${number}`);
 
     const targetSq = this.state.selectedSquare;
+    const i = targetSq[0];
+    const j = targetSq[1];
+    const k = parseInt(number);
+    console.log(`onNumberButtonClick (${i},${j}) k=${k}}`);
 
+    if (i === -1 || j === -1) {
+      return;
+    }
     if (this.state.mode === "setMarks") {
-
-      console.log('setMarks');
+      const cur = this.board.getMark(i,j,k);
+      this.board.setMark(i,j,k,!cur);
+      this.updateStateBoard();
+      return;
     }
 
     if (this.state.mode === "setVals") {
-      this.board.setVal(targetSq[0], targetSq[1], parseInt(number));
+      this.board.setVal(targetSq[0], targetSq[1], k);
       this.updateStateBoard();
-      console.log('setVals');
+      return;
     }
 
 
@@ -114,7 +145,7 @@ class Game extends React.Component {
     return (
       <div className="game">
         <div className="board">
-          <GameCells selectedSquare={this.state.selectedSquare} onSquareClick={this.onSquareClick.bind(this)} board={this.state.exportBoard} />
+          <GameCells selectedSquare={this.state.selectedSquare} onSquareClick={this.onSquareClick.bind(this)} board={this.state.exportBoard} selectedBox={this.state.selectedBox} />
         </div>
         <div className="controls">
           <Controls mode={this.state.mode} onNumberButtonClick={this.onNumberButtonClick.bind(this)} onModeToggleClick={this.onModeToggleClick.bind(this)} />

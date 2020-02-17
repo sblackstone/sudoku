@@ -10,7 +10,7 @@ const NumberButtons = function(props) {
 }
 
 const ModeToggle = function(props) {
-  return(<div className="modeToggleButton" onClick={props.onModeToggleClick} >MT</div>);
+  return(<div className="modeToggleButton" onClick={props.onModeToggleClick}>{props.mode}</div>);
 }
 export class Controls extends React.Component {
 
@@ -25,7 +25,6 @@ export class Controls extends React.Component {
     return (<div>
              <NumberButtons {...this.props} />
              <ModeToggle {...this.props} />
-             <div className="modeDisplay">{this.props.mode}</div>
             </div>);
   }
 
