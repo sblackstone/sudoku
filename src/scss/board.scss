@@ -49,14 +49,13 @@
 }
 
 .selectedSquare {
-  background-color: rgba(0,0,200, 0.6);
-  border: 1px solid rgba(0,0,200, 0.6);
+  background-color: #ADD8E6;
+  border: 1px solid #ADD8E6;
+
 }
 
 .relatedSquare {
-  background-color: rgba(0,0,200, 0.1);
-  border: 1px solid rgba(0,0,200, 0.1);
-
+  background-color: #efefef;
 }
 
 .marks {
@@ -72,9 +71,43 @@
     box-sizing: border-box;
     width: 3vmin;
     height: 3vmin;
+    color: #000;
+    //background-color: #000;
     line-height: 3vmin;
   }
 }
+
+/*
+
+.mark1 {
+  background-color: rgba(0,0,255, 0.1) !important;
+}
+.mark2 {
+  background-color: rgba(0,0,255, 0.2) !important;
+}
+.mark3 {
+  background-color: rgba(0,0,255, 0.3) !important;
+}
+
+.mark4 {
+  background-color: rgba(0,0,255, 0.4) !important;
+}
+.mark5 {
+  background-color: rgba(0,0,255, 0.5) !important;
+}
+.mark6 {
+  background-color: rgba(0,0,255, 0.6) !important;
+}
+.mark7 {
+  background-color: rgba(0,0,255, 0.7) !important;
+}
+.mark8 {
+  background-color: rgba(0,0,255, 0.8) !important;
+}
+.mark9 {
+  background-color: rgba(0,0,255, 0.9) !important;
+}
+*/
 
 /*
 .cell {

@@ -5,19 +5,24 @@ import './scss/board.scss';
 import './scss/game.scss';
 
 const Marks = function(props) {
+    const markClasses = [];
+    for (let i = 1; i < 10; i++) {
+      markClasses[i] = props.marks[i] ? `mark${i}` : "";
+    }
+  
+  
     return(
       <div className="marks">
-        <div className="mark">{props.marks[1] ? "1" : ""}</div>
-        <div className="mark">{props.marks[2] ? "2" : ""}</div>
-        <div className="mark">{props.marks[3] ? "3" : ""}</div>
 
-        <div className="mark">{props.marks[4] ? "4" : ""}</div>
-        <div className="mark">{props.marks[5] ? "5" : ""}</div>
-        <div className="mark">{props.marks[6] ? "6" : ""}</div>
-
-        <div className="mark">{props.marks[7] ? "7" : ""}</div>
-        <div className="mark">{props.marks[8] ? "8" : ""}</div>
-        <div className="mark">{props.marks[9] ? "9" : ""}</div>
+        <div className={`mark ${markClasses[1]}`}>{props.marks[1] ? "1" : ""}</div>
+        <div className={`mark ${markClasses[2]}`}>{props.marks[2] ? "2" : ""}</div>
+        <div className={`mark ${markClasses[3]}`}>{props.marks[3] ? "3" : ""}</div>
+        <div className={`mark ${markClasses[4]}`}>{props.marks[4] ? "4" : ""}</div>
+        <div className={`mark ${markClasses[5]}`}>{props.marks[5] ? "5" : ""}</div>
+        <div className={`mark ${markClasses[6]}`}>{props.marks[6] ? "6" : ""}</div>
+        <div className={`mark ${markClasses[7]}`}>{props.marks[7] ? "7" : ""}</div>
+        <div className={`mark ${markClasses[8]}`}>{props.marks[8] ? "8" : ""}</div>
+        <div className={`mark ${markClasses[9]}`}>{props.marks[9] ? "9" : ""}</div>
       </div>
     )
 }
@@ -91,7 +96,7 @@ class Game extends React.Component {
   }
 
   updateStateBoard() {
-    //this.board.autoNotate();
+    this.board.autoNotate();
     
     this.setState({
       exportBoard: this.board.export()
