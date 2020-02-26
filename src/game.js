@@ -7,10 +7,10 @@ import './scss/game.scss';
 const Marks = function(props) {
     const markClasses = [];
     for (let i = 1; i < 10; i++) {
-      markClasses[i] = props.marks[i] ? `mark${i}` : "";
+      markClasses[i] = props.marks[i] ? `mark_${i}` : "";
     }
-  
-  
+
+
     return(
       <div className="marks">
 
@@ -61,19 +61,19 @@ const GameCell = function(props) {
     if (props.j == props.selectedSquare[1]) {
       sameBoxClass = "relatedSquare";
     }
-  
+
     const box =  Math.floor(props.i / 3) * 3 + Math.floor(props.j /3);
-  
+
     if (box === props.selectedBox) {
-      sameBoxClass = "relatedSquare";    
+      sameBoxClass = "relatedSquare";
     }
-    
+
   }
 
-
+  const valClass = props.cell.value == -1 ? "" : `value_${props.cell.value}`;
 
   return (
-    <div onClick={props.onSquareClick} className={`cell r${props.i} c${props.j} ${selectedClass} ${sameBoxClass}`}>
+    <div onClick={props.onSquareClick} className={`cell r${props.i} c${props.j} ${selectedClass} ${sameBoxClass} ${valClass}`}>
       <GameCellValue {...props} />
     </div>
   )
@@ -97,7 +97,7 @@ class Game extends React.Component {
 
   updateStateBoard() {
     this.board.autoNotate();
-    
+
     this.setState({
       exportBoard: this.board.export()
     })
