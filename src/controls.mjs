@@ -4,7 +4,8 @@ import './scss/controls.scss';
 const NumberButtons = function(props) {
   const result = [];
   for (let i = 1; i < 10; i++) {
-    result.push(<div onClick={()=> { props.onNumberButtonClick(i); }} key={`nb${i}`} className="numberButton">{i}</div>);
+    const btnClass = `btn_${i}`;
+    result.push(<div onClick={()=> { props.onNumberButtonClick(i); }} key={`nb${i}`} className={`numberButton ${btnClass}`}>{i}</div>);
   }
   return result;
 }
