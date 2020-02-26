@@ -55,10 +55,10 @@ const GameCell = function(props) {
   if (props.isSelected) {
     selectedClass="selectedSquare";
   } else {
-    if (props.i == props.selectedSquare[0]) {
+    if (props.i === props.selectedSquare[0]) {
       sameBoxClass = "relatedSquare";
     }
-    if (props.j == props.selectedSquare[1]) {
+    if (props.j === props.selectedSquare[1]) {
       sameBoxClass = "relatedSquare";
     }
 
@@ -70,7 +70,7 @@ const GameCell = function(props) {
 
   }
 
-  const valClass = props.cell.value == -1 ? "" : `value value_${props.cell.value}`;
+  const valClass = props.cell.value === -1 ? "" : `value value_${props.cell.value}`;
 
   return (
     <div onClick={props.onSquareClick} className={`cell r${props.i} c${props.j} ${selectedClass} ${sameBoxClass} ${valClass}`}>
@@ -111,7 +111,6 @@ class Game extends React.Component {
   }
 
   onSquareClick(i,j) {
-    const newSq = [i,j];
     const newBox = this.board.boxNumberForSquare(i,j);
     this.setState({
       selectedSquare: [i,j],

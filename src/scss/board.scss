@@ -76,74 +76,42 @@
     line-height: 3vmin;
   }
 }
-
 /*
-
-.mark1 {
-  background-color: rgba(0,0,255, 0.1) !important;
+.mark_1,
+.value_1 {
+  background-color: red;
 }
-.mark2 {
-  background-color: rgba(0,0,255, 0.2) !important;
+.mark_2,
+.value_2 {
+  background-color: orange;
 }
-.mark3 {
-  background-color: rgba(0,0,255, 0.3) !important;
-}
-
-.mark4 {
-  background-color: rgba(0,0,255, 0.4) !important;
-}
-.mark5 {
-  background-color: rgba(0,0,255, 0.5) !important;
-}
-.mark6 {
-  background-color: rgba(0,0,255, 0.6) !important;
-}
-.mark7 {
-  background-color: rgba(0,0,255, 0.7) !important;
-}
-.mark8 {
-  background-color: rgba(0,0,255, 0.8) !important;
-}
-.mark9 {
-  background-color: rgba(0,0,255, 0.9) !important;
-}
-*/
-
-/*
-.cell {
-  border: 1px solid #aaa;
-  width: 50px;
-  height: 50px;
-  padding: 10px;
-  font-size: 35px;
-  text-align: center;
+.mark_3,
+.value_3 {
+  background-color: yellow;
 }
 
-.row5, .row2 {
-  > td {
-    border-bottom: 3px solid black;
-  }
+.mark_4,
+.value_4 {
+  background-color: green;
 }
-
-.col3, .col6 {
-    border-left: 3px solid black;
+.mark_5,
+.value_5 {
+  background-color: blue;
 }
-
-
-.board {
-  border-collapse: collapse;
-  border: 3px solid black;
-  height: 80vmin;
-  width: 80vmin;
-  margin: 10vmin auto;
+.mark_6,
+.value_6 {
+  background-color: purple;
 }
-
-
-.marksTable {
-  width: 50px;
-  height: 50px;
-  color: #aaa;
-  font-size: 12px;
-  border-collapse: collapse;
+.mark_7,
+.value_7 {
+  background-color: black;
+}
+.mark_8,
+.value_8 {
+  background-color: brown;
+}
+.mark_9,
+.value_9 {
+  background-color: gray;
 }
 */
