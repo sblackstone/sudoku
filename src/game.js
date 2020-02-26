@@ -70,7 +70,7 @@ const GameCell = function(props) {
 
   }
 
-  const valClass = props.cell.value == -1 ? "" : `value_${props.cell.value}`;
+  const valClass = props.cell.value == -1 ? "" : `value value_${props.cell.value}`;
 
   return (
     <div onClick={props.onSquareClick} className={`cell r${props.i} c${props.j} ${selectedClass} ${sameBoxClass} ${valClass}`}>
