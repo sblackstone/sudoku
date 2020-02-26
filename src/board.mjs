@@ -122,6 +122,20 @@ export class Board {
   }
 
   setExample() {
+    const example = "000830057008500600130002080802390700600100032057204090060410370073908060000760400";
+    for (let i = 0; i < 9; i++) {
+      for (let j = 0; j < 9; j++) {
+          const idx = i*9+j;
+          if (example[idx] != 0) {
+            this.setVal(i,j, parseInt(example[idx]));
+          }
+       }
+    }
+    this.autoNotate();
+
+  }
+
+    /*
     this.setVal(0,2,6);
     this.setVal(0,4,1);
     this.setVal(1,1,2);
@@ -153,7 +167,7 @@ export class Board {
     this.setVal(8,4,9);
     this.setVal(8,8,6);
   }
-
+*/
   valueInCol(j, value) {
     for (let i = 0; i < 9; i++) {
       if (this.getVal(i,j) === value) {
