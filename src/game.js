@@ -3,35 +3,52 @@ import Board from './board.mjs';
 import Controls from './controls.mjs';
 import './scss/board.scss';
 import './scss/game.scss';
+import { Doughnut } from 'react-chartjs-2';
 
 const Marks = function(props) {
-    const markClasses = [];
+    const labels = [];
+    const fakeData = [];
+
     for (let i = 1; i < 10; i++) {
-      markClasses[i] = props.marks[i] ? `mark_${i}` : "";
+      labels.push(`${i}`);
+      fakeData.push(props.marks[i] ? 1 : 0);
     }
 
 
-    return(
-      <div className="marks">
+    const data = {
+    	labels: labels,
+    	datasets: [{
+    		data: fakeData,
+    		backgroundColor: [
+          'red',
+          'orange',
+          'yellow',
+          'green',
+          'blue',
+          'purple',
+          'cyan',
+          'brown',
+          'gray'
+    		]
+    	}]
+    };
 
-        <div className={`mark ${markClasses[1]}`}>{props.marks[1] ? "1" : ""}</div>
-        <div className={`mark ${markClasses[2]}`}>{props.marks[2] ? "2" : ""}</div>
-        <div className={`mark ${markClasses[3]}`}>{props.marks[3] ? "3" : ""}</div>
-        <div className="break"></div>
-        <div className={`mark ${markClasses[4]}`}>{props.marks[4] ? "4" : ""}</div>
-        <div className={`mark ${markClasses[5]}`}>{props.marks[5] ? "5" : ""}</div>
-        <div className={`mark ${markClasses[6]}`}>{props.marks[6] ? "6" : ""}</div>
-        <div className="break"></div>
-        <div className={`mark ${markClasses[7]}`}>{props.marks[7] ? "7" : ""}</div>
-        <div className={`mark ${markClasses[8]}`}>{props.marks[8] ? "8" : ""}</div>
-        <div className={`mark ${markClasses[9]}`}>{props.marks[9] ? "9" : ""}</div>
-      </div>
+    const opts = {
+      legend:  { display: false },
+      tooltips: { display: false }
+    }
+
+    return (
+      <Doughnut data={data} options={opts} width="2vmin" height="2vmin" />
     )
+
+
 }
 
 const GameCellValue = function(props) {
   if (props.cell.value !== -1) {
-    return (<span className="cell-value">{props.cell.value}</span>);
+    //return (<div className="cell-value">{props.cell.value}</div>);
+    return (<div className="cell-value"></div>);
   } else {
     return (
       <Marks marks={props.cell.marks} />
@@ -99,7 +116,7 @@ class Game extends React.Component {
   }
 
   updateStateBoard() {
-    this.board.autoNotate();
+    //this.board.autoNotate();
 
     this.setState({
       exportBoard: this.board.export()

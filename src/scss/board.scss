@@ -15,8 +15,11 @@
 }
 
 .cell-value {
-  line-height: 9vmin;
-  font-size: 4vmin;
+  height: 7vmin;
+  width: 7vmin;
+  margin: 1vmin;
+  line-height: 7vmin;
+  border-radius: 100%;
 }
 
 .cell {
@@ -68,55 +71,55 @@
   flex-direction: rows;
   flex-wrap: wrap;
   box-sizing: border-box;
+  align-content: space-around;
   width: 9vmin;
   height: 9vmin;
   color: #aaa;
-  font-size: 15px;
-  .mark {
-    box-sizing: border-box;
-    width: 3vmin;
-    height: 3vmin;
-    color: #000;
-    //background-color: #000;
-    line-height: 3vmin;
-  }
-}
-/*
-.mark_1,
-.value_1 {
-  background-color: red;
-}
-.mark_2,
-.value_2 {
-  background-color: orange;
-}
-.mark_3,
-.value_3 {
-  background-color: yellow;
 }
 
+.btn_1,
+.mark_1,
+.value_1 > div {
+  background-color: red;
+}
+
+.btn_2,
+.mark_2,
+.value_2 > div {
+  background-color: orange;
+}
+.btn_3,
+.mark_3,
+.value_3 > div {
+  background-color: yellow;
+}
+.btn_4,
 .mark_4,
-.value_4 {
+.value_4 > div {
   background-color: green;
 }
+.btn_5,
 .mark_5,
-.value_5 {
+.value_5 > div {
   background-color: blue;
 }
+.btn_6,
 .mark_6,
-.value_6 {
+.value_6 > div {
   background-color: purple;
 }
+.btn_7,
 .mark_7,
-.value_7 {
-  background-color: black;
+.value_7 > div {
+  background-color: cyan;
 }
+.btn_8,
 .mark_8,
-.value_8 {
+.value_8 > div {
   background-color: brown;
 }
+.btn_9,
 .mark_9,
-.value_9 {
+.value_9 > div {
   background-color: gray;
 }
-*/

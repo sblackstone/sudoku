@@ -5,7 +5,8 @@ const NumberButtons = function(props) {
   const result = [];
   for (let i = 1; i < 10; i++) {
     const btnClass = `btn_${i}`;
-    result.push(<div onClick={()=> { props.onNumberButtonClick(i); }} key={`nb${i}`} className={`numberButton ${btnClass}`}>{i}</div>);
+    //result.push(<div onClick={()=> { props.onNumberButtonClick(i); }} key={`nb${i}`} className={`numberButton ${btnClass}`}>{i}</div>);
+    result.push(<div onClick={()=> { props.onNumberButtonClick(i); }} key={`nb${i}`} className={`numberButton ${btnClass}`}></div>);
   }
   return result;
 }
