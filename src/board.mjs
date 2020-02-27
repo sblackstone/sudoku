@@ -126,7 +126,7 @@ export class Board {
     for (let i = 0; i < 9; i++) {
       for (let j = 0; j < 9; j++) {
           const idx = i*9+j;
-          if (example[idx] != 0) {
+          if (example[idx] !== 0) {
             this.setVal(i,j, parseInt(example[idx]));
           }
        }
