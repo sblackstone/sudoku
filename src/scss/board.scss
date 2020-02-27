@@ -3,8 +3,8 @@
   display: flex;
   box-sizing: border-box;
   //border: 3px solid black;
-  height: 81vmin;
-  width: 81vmin;
+  height: 87vmin;
+  width: 87vmin;
   flex-direction: row;
   flex-wrap: wrap;
 }
@@ -15,43 +15,43 @@
 }
 
 .cell-value {
-  height: 7vmin;
-  width: 7vmin;
-  margin: 1vmin;
+  height: 6.6vmin;
+  width: 6.6vmin;
   line-height: 7vmin;
   border-radius: 100%;
+  margin: 1vmin 1vmin;
 }
 
 .cell {
   box-sizing: border-box;
-  border: 1px solid #bbb;
+  //border: 1px solid #bbb;
   width:  9vmin;
   height: 9vmin;
   margin: 0;
   text-align: center;
   &.r0 {
-    border-top: 1px solid #000;
+    //border-top: 1px solid #bbb;
   }
 
   &.c0 {
-    border-left: 1px solid #000;
+    //border-left: 1px solid #bbb;
   }
 
   &.c8 {
-    border-right: 1px solid #000;
+    //border-right: 1px solid #bbb;
   }
   &.r8 {
-    border-bottom: 1px solid #000;
+    //border-bottom: 1px solid #bbb;
   }
 
 
   &.c3, &.c6 {
     box-sizing: border-box;
-    border-left: 2px solid black;
+    margin-left: 3vmin;
   }
   &.r2, &.r5 {
-    border-bottom: 2px solid black;
     box-sizing: border-box;
+    margin-bottom: 1vmin;
   }
 
 }
@@ -63,7 +63,7 @@
 }
 
 .relatedSquare {
-  background-color: #efefef;
+  background-color: rgba(255,255,255, 0.2);
 }
 
 .marks {
@@ -72,8 +72,9 @@
   flex-wrap: wrap;
   box-sizing: border-box;
   align-content: space-around;
-  width: 9vmin;
-  height: 9vmin;
+  width: 7vmin;
+  height: 7vmin;
+  margin: 1vmin 1vmin;
   color: #aaa;
 }
 

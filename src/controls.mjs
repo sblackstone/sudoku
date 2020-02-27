@@ -24,10 +24,10 @@ export class Controls extends React.Component {
   }
 
   render() {
-    return (<div>
+    return (<React.Fragment>
              <NumberButtons {...this.props} />
              <ModeToggle {...this.props} />
-            </div>);
+            </React.Fragment>);
   }
 
 }

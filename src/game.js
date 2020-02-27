@@ -19,6 +19,8 @@ const Marks = function(props) {
     	labels: labels,
     	datasets: [{
     		data: fakeData,
+        borderColor: '#000',
+        borderWidth: 0,
     		backgroundColor: [
           'red',
           'orange',
@@ -39,7 +41,9 @@ const Marks = function(props) {
     }
 
     return (
-      <Doughnut data={data} options={opts} width="2vmin" height="2vmin" />
+      <div className="marks">
+        <Doughnut data={data} options={opts} width="2vmin" height="2vmin" />
+      </div>
     )
 
 
