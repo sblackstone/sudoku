@@ -63,11 +63,12 @@ const GameCellValue = function(props) {
 const GameCells = function(props) {
   const ret = [];
   for (let i = 0; i < 9; i++) {
+    const row = [];
     for (let j = 0; j < 9; j++) {
       const isSelected = props.selectedSquare[0] === i && props.selectedSquare[1] === j;
-      ret.push(<GameCell onSquareClick={()=> { props.onSquareClick(i,j); }} isSelected={isSelected} key={`${i}${j}`} cell={props.board[i][j]} i={i} j={j} selectedSquare={props.selectedSquare} selectedBox={props.selectedBox}/>);
+      row.push(<GameCell onSquareClick={()=> { props.onSquareClick(i,j); }} isSelected={isSelected} key={`${i}${j}`} cell={props.board[i][j]} i={i} j={j} selectedSquare={props.selectedSquare} selectedBox={props.selectedBox}/>);
     }
-    ret.push(<div className="break"></div>)
+    ret.push(<tr>{row}</tr>);
   }
   return ret;
 }
@@ -97,9 +98,9 @@ const GameCell = function(props) {
   const valClass = props.cell.value === -1 ? "" : `value value_${props.cell.value}`;
 
   return (
-    <div onClick={props.onSquareClick} className={`cell r${props.i} c${props.j} ${selectedClass} ${sameBoxClass} ${valClass}`}>
+    <td onClick={props.onSquareClick} className={`cell r${props.i} c${props.j} ${selectedClass} ${sameBoxClass} ${valClass}`}>
       <GameCellValue {...props} />
-    </div>
+    </td>
   )
 }
 
@@ -172,9 +173,11 @@ class Game extends React.Component {
   render() {
     return (
       <div className="game">
-        <div className="board">
-          <GameCells selectedSquare={this.state.selectedSquare} onSquareClick={this.onSquareClick.bind(this)} board={this.state.exportBoard} selectedBox={this.state.selectedBox} />
-        </div>
+        <table className="board">
+          <tbody>
+            <GameCells selectedSquare={this.state.selectedSquare} onSquareClick={this.onSquareClick.bind(this)} board={this.state.exportBoard} selectedBox={this.state.selectedBox} />
+          </tbody>
+        </table>
         <div className="controls">
           <Controls mode={this.state.mode} onNumberButtonClick={this.onNumberButtonClick.bind(this)} onModeToggleClick={this.onModeToggleClick.bind(this)} />
         </div>

@@ -1,12 +1,12 @@
 
 .board {
-  display: flex;
+  border: 1px solid rgba(255,255,255, 0.1);
+
+  border-collapse: collapse;
   box-sizing: border-box;
   //border: 3px solid black;
   height: 87vmin;
   width: 87vmin;
-  flex-direction: row;
-  flex-wrap: wrap;
 }
 
 .break {
@@ -45,25 +45,37 @@
   }
 
 
+  &.c2, &.c5 {
+    padding-right: 1vmin;
+  }
+
   &.c3, &.c6 {
-    box-sizing: border-box;
-    margin-left: 3vmin;
+    border-left: 1px solid rgba(255,255,255, 0.1);
+    //padding-left: 1vmin;
   }
+
   &.r2, &.r5 {
-    box-sizing: border-box;
-    margin-bottom: 1vmin;
+    border-bottom: 1px solid rgba(255,255,255, 0.1);
+    //padding-bottom: 1vmin;
   }
+
+  &.r3, &.r6 {
+    //padding-top: 1vmin;
+  }
+
+
 
 }
 
 .selectedSquare {
-  background-color: #ADD8E6;
-  border: 1px solid #ADD8E6;
+  background-color: rgba(255,255,255, 0.1);
+  border: 0 !important;
 
 }
 
 .relatedSquare {
   background-color: rgba(255,255,255, 0.2);
+  border: 0 !important;
 }
 
 .marks {
