@@ -17,9 +17,11 @@ const Marks = function(props) {
         <div className={`mark ${markClasses[1]}`}>{props.marks[1] ? "1" : ""}</div>
         <div className={`mark ${markClasses[2]}`}>{props.marks[2] ? "2" : ""}</div>
         <div className={`mark ${markClasses[3]}`}>{props.marks[3] ? "3" : ""}</div>
+        <div className="break"></div>
         <div className={`mark ${markClasses[4]}`}>{props.marks[4] ? "4" : ""}</div>
         <div className={`mark ${markClasses[5]}`}>{props.marks[5] ? "5" : ""}</div>
         <div className={`mark ${markClasses[6]}`}>{props.marks[6] ? "6" : ""}</div>
+        <div className="break"></div>
         <div className={`mark ${markClasses[7]}`}>{props.marks[7] ? "7" : ""}</div>
         <div className={`mark ${markClasses[8]}`}>{props.marks[8] ? "8" : ""}</div>
         <div className={`mark ${markClasses[9]}`}>{props.marks[9] ? "9" : ""}</div>
@@ -44,6 +46,7 @@ const GameCells = function(props) {
       const isSelected = props.selectedSquare[0] === i && props.selectedSquare[1] === j;
       ret.push(<GameCell onSquareClick={()=> { props.onSquareClick(i,j); }} isSelected={isSelected} key={`${i}${j}`} cell={props.board[i][j]} i={i} j={j} selectedSquare={props.selectedSquare} selectedBox={props.selectedBox}/>);
     }
+    ret.push(<div className="break"></div>)
   }
   return ret;
 }

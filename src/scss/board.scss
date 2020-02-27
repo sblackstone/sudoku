@@ -9,6 +9,11 @@
   flex-wrap: wrap;
 }
 
+.break {
+  flex-basis: 100%;
+  height: 0;
+}
+
 .cell-value {
   line-height: 9vmin;
   font-size: 4vmin;
