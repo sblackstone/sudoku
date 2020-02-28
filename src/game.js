@@ -37,7 +37,7 @@ const Marks = function(props) {
 
     const opts = {
       legend:  { display: false },
-      tooltips: { display: false }
+      tooltips: { enabled: false }
     }
 
     return (
@@ -121,8 +121,9 @@ class Game extends React.Component {
   }
 
   onElementsClick(e) {
+    const val = e[0]._index;
     console.log("BOOM");
-    console.log(e);
+    console.log(val);
   }
 
   updateStateBoard() {
