@@ -42,7 +42,7 @@ const Marks = function(props) {
 
     return (
       <div className="marks">
-        <Doughnut data={data} options={opts} width="2vmin" height="2vmin" />
+        <Doughnut data={data} options={opts} onElementsClick={props.onElementsClick} width="2vmin" height="2vmin" />
       </div>
     )
 
@@ -55,7 +55,7 @@ const GameCellValue = function(props) {
     return (<div className="cell-value"></div>);
   } else {
     return (
-      <Marks marks={props.cell.marks} />
+      <Marks marks={props.cell.marks} onElementsClick={props.onElementsClick} />
     )
   }
 }
@@ -66,7 +66,7 @@ const GameCells = function(props) {
     const row = [];
     for (let j = 0; j < 9; j++) {
       const isSelected = props.selectedSquare[0] === i && props.selectedSquare[1] === j;
-      row.push(<GameCell onSquareClick={()=> { props.onSquareClick(i,j); }} isSelected={isSelected} key={`${i}${j}`} cell={props.board[i][j]} i={i} j={j} selectedSquare={props.selectedSquare} selectedBox={props.selectedBox}/>);
+      row.push(<GameCell onElementsClick={props.onElementsClick} onSquareClick={()=> { props.onSquareClick(i,j); }} isSelected={isSelected} key={`${i}${j}`} cell={props.board[i][j]} i={i} j={j} selectedSquare={props.selectedSquare} selectedBox={props.selectedBox}/>);
     }
     ret.push(<tr>{row}</tr>);
   }
@@ -118,6 +118,11 @@ class Game extends React.Component {
       selectedBox: -1
     }
 
+  }
+
+  onElementsClick(e) {
+    console.log("BOOM");
+    console.log(e);
   }
 
   updateStateBoard() {
@@ -175,7 +180,7 @@ class Game extends React.Component {
       <div className="game">
         <table className="board">
           <tbody>
-            <GameCells selectedSquare={this.state.selectedSquare} onSquareClick={this.onSquareClick.bind(this)} board={this.state.exportBoard} selectedBox={this.state.selectedBox} />
+            <GameCells onElementsClick={this.onElementsClick.bind(this)} selectedSquare={this.state.selectedSquare} onSquareClick={this.onSquareClick.bind(this)} board={this.state.exportBoard} selectedBox={this.state.selectedBox} />
           </tbody>
         </table>
         <div className="controls">
