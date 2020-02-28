@@ -77,6 +77,14 @@ export class Board {
     return this.__rows[i][j].setMark(k,v);
   }
 
+  updateSingles() {
+    for (let i = 0; i < 9; i++) {
+      for (let j = 0; j < 9; j++) {
+        this.__rows[i][j].updateIfSingle();
+      }
+    }
+  }
+
   export() {
     return this.rows.map(i => i.map(j => j.export() ));
   }
@@ -113,6 +121,9 @@ export class Board {
     for (let i = 0; i < 9; i++) {
       for (let j = 0; j < 9; j++) {
         for (let k = 1; k < 10; k++){
+          if (this.rows[i][j].value > -1) {
+            continue;
+          }
           const boxNum = boxNumbers[i][j];
           const val = !(this.valueInRow(i, k) || this.valueInCol(j, k) || this.valueInBox(boxNum, k));
           this.rows[i][j].setMark(k, val);

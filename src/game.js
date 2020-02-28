@@ -132,11 +132,17 @@ class Game extends React.Component {
       const k = e[0]._index;
       console.log(i,j,k);
       this.board.setMark(i,j,k+1,false);
+      this.board.rows[i][j].updateIfSingle();
       this.updateStateBoard();
     } catch (err) {
       console.log(err);
     }
 
+  }
+
+  updateSingles() {
+    this.board.updateSingles();
+    this.updateStateBoard();
   }
 
   updateStateBoard() {
