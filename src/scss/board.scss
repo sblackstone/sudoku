@@ -1,6 +1,6 @@
 
 .board {
-  border: 1px solid rgba(255,255,255, 0.1);
+  border: 1px solid rgba(255,255,255, 0.2);
 
   border-collapse: collapse;
   box-sizing: border-box;
@@ -50,17 +50,17 @@
   }
 
   &.c3, &.c6 {
-    border-left: 1px solid rgba(255,255,255, 0.1);
-    //padding-left: 1vmin;
+    border-left: 1px solid rgba(255,255,255, 0.2);
+    padding-left: 1vmin;
   }
 
   &.r2, &.r5 {
-    border-bottom: 1px solid rgba(255,255,255, 0.1);
-    //padding-bottom: 1vmin;
+    border-bottom: 1px solid rgba(255,255,255, 0.2);
+    padding-bottom: 1vmin;
   }
 
   &.r3, &.r6 {
-    //padding-top: 1vmin;
+    padding-top: 1vmin;
   }
 
 
