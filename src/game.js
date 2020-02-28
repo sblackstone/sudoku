@@ -66,7 +66,14 @@ const GameCells = function(props) {
     const row = [];
     for (let j = 0; j < 9; j++) {
       const isSelected = props.selectedSquare[0] === i && props.selectedSquare[1] === j;
-      row.push(<GameCell onElementsClick={props.onElementsClick} onSquareClick={()=> { props.onSquareClick(i,j); }} isSelected={isSelected} key={`${i}${j}`} cell={props.board[i][j]} i={i} j={j} selectedSquare={props.selectedSquare} selectedBox={props.selectedBox}/>);
+
+      const onEleClick = (function(ii, jj, oec) {
+        return (e) => {
+          oec(ii,jj, e);
+        };
+      })(i,j, props.onElementsClick);
+
+      row.push(<GameCell onElementsClick={onEleClick} onSquareClick={()=> { props.onSquareClick(i,j); }} isSelected={isSelected} key={`${i}${j}`} cell={props.board[i][j]} i={i} j={j} selectedSquare={props.selectedSquare} selectedBox={props.selectedBox}/>);
     }
     ret.push(<tr>{row}</tr>);
   }
@@ -120,10 +127,16 @@ class Game extends React.Component {
 
   }
 
-  onElementsClick(e) {
-    const val = e[0]._index;
-    console.log("BOOM");
-    console.log(val);
+  onElementsClick(i,j,e) {
+    try {
+      const k = e[0]._index;
+      console.log(i,j,k);
+      this.board.setMark(i,j,k+1,false);
+      this.updateStateBoard();
+    } catch (err) {
+      console.log(err);
+    }
+
   }
 
   updateStateBoard() {
