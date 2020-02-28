@@ -50,11 +50,17 @@ export class Board {
 
   createRows() {
     this.__rows = [];
+    this.__manual_removals = {}; // [10][0]
     for (let i = 0; i < 9; i++) {
       const row = [];
+      this.__manual_removals[i] = {};
       for (let j = 0; j < 9; j++) {
         //row.push(new Cell(`${i}${j} ${squaresCache[i][j]}`));
         //row.push(new Cell(`${i}${j}`));
+        this.__manual_removals[i][j] = {}; // [10][0]
+        for (let k = 1; k < 10; k++) {
+          this.__manual_removals[i][j][k] = false;
+        }
         row.push(new Cell());
       }
       this.__rows.push(row);
@@ -75,6 +81,11 @@ export class Board {
 
   setMark(i,j,k,v) {
     return this.__rows[i][j].setMark(k,v);
+  }
+
+  removeMarkClick(i,j,k) {
+    this.setMark(i,j,k, false);
+    this.__manual_removals[i][j][k] = true;
   }
 
   updateSingles() {
@@ -126,6 +137,11 @@ export class Board {
           if (this.rows[i][j].value > -1) {
             continue;
           }
+
+          if (this.__manual_removals[i][j][k]) {
+            continue;
+          }
+
           const boxNum = boxNumbers[i][j];
           const val = !(this.valueInRow(i, k) || this.valueInCol(j, k) || this.valueInBox(boxNum, k));
           this.rows[i][j].setMark(k, val);
@@ -140,7 +156,7 @@ export class Board {
   setExample() {
     const easyexample = "000830057008500600130002080802390700600100032057204090060410370073908060000760400";
     const hardExample = "070000000080400070000053040009100730700002000000004902500009800004500000103020004"
-    const example = hardExample;
+    const example = easyexample;
     for (let i = 0; i < 9; i++) {
       for (let j = 0; j < 9; j++) {
           const idx = i*9+j;

@@ -8,10 +8,24 @@ import { Doughnut } from 'react-chartjs-2';
 const Marks = function(props) {
     const labels = [];
     const fakeData = [];
+    const bgColors = [];
+    const bgs = [
+      '',
+      'red',
+      'orange',
+      'yellow',
+      'green',
+      'blue',
+      'purple',
+      'cyan',
+      'brown',
+      'gray'
+    ];
 
     for (let i = 1; i < 10; i++) {
       labels.push(`${i}`);
-      fakeData.push(props.marks[i] ? 1 : 0);
+      fakeData.push(1);
+      bgColors.push(props.marks[i] ? bgs[i] : 'rgba(255,255,255, 0.25)');
     }
 
 
@@ -21,17 +35,7 @@ const Marks = function(props) {
     		data: fakeData,
         borderColor: '#000',
         borderWidth: 0,
-    		backgroundColor: [
-          'red',
-          'orange',
-          'yellow',
-          'green',
-          'blue',
-          'purple',
-          'cyan',
-          'brown',
-          'gray'
-    		]
+    		backgroundColor: bgColors
     	}]
     };
 
@@ -132,14 +136,14 @@ class Game extends React.Component {
       try {
         const k = e[0]._index;
         console.log(i,j,k);
-        this.board.setMark(i,j,k+1,false);
+        this.board.removeMarkClick(i,j,k+1,false);
         this.board.rows[i][j].updateIfSingle();
       } catch (err) {
         console.log(err);
       }
 
     }
-    this.board.autoNotate();
+    //this.board.autoNotate();
     this.updateStateBoard();
 
   }
@@ -150,7 +154,7 @@ class Game extends React.Component {
   }
 
   updateStateBoard() {
-    //this.board.autoNotate();
+    this.board.autoNotate();
 
     this.setState({
       exportBoard: this.board.export()
