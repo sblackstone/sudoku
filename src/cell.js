@@ -27,6 +27,9 @@ export class Cell {
 
     if (count === 1) {
       this.value = last;
+      return true;
+    } else {
+      return false;
     }
 
 

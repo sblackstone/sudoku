@@ -78,11 +78,13 @@ export class Board {
   }
 
   updateSingles() {
+    let ret = false;
     for (let i = 0; i < 9; i++) {
       for (let j = 0; j < 9; j++) {
-        this.__rows[i][j].updateIfSingle();
+        ret = ret || this.__rows[i][j].updateIfSingle();
       }
     }
+    return ret;
   }
 
   export() {
@@ -130,6 +132,9 @@ export class Board {
         }
       }
     }
+    //if (this.updateSingles()) {
+    //  this.autoNotate();
+    //}
   }
 
   setExample() {
