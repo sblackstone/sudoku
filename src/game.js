@@ -19,7 +19,7 @@ const Marks = function(props) {
       'purple',
       'cyan',
       'brown',
-      'gray'
+      'DeepPink'
     ];
 
     for (let i = 1; i < 10; i++) {
@@ -176,44 +176,16 @@ class Game extends React.Component {
     });
   }
 
-  onNumberButtonClick(number) {
-
-    const targetSq = this.state.selectedSquare;
-    const i = targetSq[0];
-    const j = targetSq[1];
-    const k = parseInt(number);
-    console.log(`onNumberButtonClick (${i},${j}) k=${k}}`);
-
-    if (i === -1 || j === -1) {
-      return;
-    }
-    if (this.state.mode === "setMarks") {
-      const cur = this.board.getMark(i,j,k);
-      this.board.setMark(i,j,k,!cur);
-      this.updateStateBoard();
-      return;
-    }
-
-    if (this.state.mode === "setVals") {
-      this.board.setVal(targetSq[0], targetSq[1], k);
-      this.updateStateBoard();
-      return;
-    }
-
-
-  }
-
   render() {
     return (
       <div className="game">
-        <div className="score">{this.state.score}</div>
         <table className="board">
           <tbody>
             <GameCells onElementsClick={this.onElementsClick.bind(this)} selectedSquare={this.state.selectedSquare} onSquareClick={this.onSquareClick.bind(this)} board={this.state.exportBoard} selectedBox={this.state.selectedBox} />
           </tbody>
         </table>
         <div className="controls">
-          <Controls mode={this.state.mode} onNumberButtonClick={this.onNumberButtonClick.bind(this)} onModeToggleClick={this.onModeToggleClick.bind(this)} />
+          <Controls score={this.state.score} />
         </div>
       </div>
     )

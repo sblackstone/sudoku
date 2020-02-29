@@ -33,6 +33,9 @@ export class Board {
     this.createRows();
     this.setExample();
     this.autoNotate();
+    while (this.updateSingles()) {
+
+    }
   }
 
 
