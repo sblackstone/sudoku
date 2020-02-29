@@ -133,16 +133,14 @@ class Game extends React.Component {
   }
 
   onElementsClick(i,j,e) {
-    if (!this.board.rows[i][j].updateIfSingle()) {
-      try {
-        const k = e[0]._index;
-        console.log(i,j,k);
-        this.board.removeMarkClick(i,j,k+1,false);
-      } catch (err) {
-        console.log(err);
-      }
-
+    try {
+      const k = e[0]._index;
+      console.log(i,j,k);
+      this.board.removeMarkClick(i,j,k+1,false);
+    } catch (err) {
+      console.log(err);
     }
+
     //this.board.autoNotate();
     this.updateStateBoard();
 

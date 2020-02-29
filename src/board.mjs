@@ -95,13 +95,12 @@ export class Board {
   removeMarkClick(i,j,k) {
     console.log(k);
     if (this.isCorrect(i,j,k)) {
-      this.score -= 10000;
-      this.setVal(i,j, this.answer[i][j])
-    } else {
-      this.score += 100;
-    }
-
-      this.setVal(i,j, this.answer[i][j])
+      if (this.rows[i][j].updateIfSingle()) {
+        this.score += 10000;
+      } else {
+        this.score -= 10000;
+        this.setVal(i,j, this.answer[i][j])
+      }
     } else {
       this.score += 100;
     }
