@@ -24,8 +24,10 @@ const Marks = function(props) {
 
     for (let i = 1; i < 10; i++) {
       labels.push(`${i}`);
-      fakeData.push(1);
-      bgColors.push(props.marks[i] ? bgs[i] : 'rgba(255,255,255, 0.25)');
+      fakeData.push(props.marks[i] ? 1 : 0);
+      bgColors.push(bgs[i]);
+      //bgColors.push(props.marks[i] ? bgs[i] : 'rgba(255,255,255, 0.25)');
+
     }
 
 
@@ -35,7 +37,8 @@ const Marks = function(props) {
     		data: fakeData,
         borderColor: '#000',
         borderWidth: 0,
-    		backgroundColor: bgColors
+    		backgroundColor: bgColors,
+        hoverBackgroundColor: bgColors
     	}]
     };
 
