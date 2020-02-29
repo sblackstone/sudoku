@@ -27,6 +27,15 @@ const invSquaresCache = [
 
 export class Board {
 
+  constructor() {
+    window.board = this;
+    this.score = 0;
+    this.createRows();
+    this.setExample();
+    this.autoNotate();
+  }
+
+
   get rows() {
     return this.__rows;
   }
@@ -84,8 +93,25 @@ export class Board {
   }
 
   removeMarkClick(i,j,k) {
+    console.log(k);
+    if (this.isCorrect(i,j,k)) {
+      this.score -= 10000;
+      this.setVal(i,j, this.answer[i][j])
+    } else {
+      this.score += 100;
+    }
+
+      this.setVal(i,j, this.answer[i][j])
+    } else {
+      this.score += 100;
+    }
+
     this.setMark(i,j,k, false);
     this.__manual_removals[i][j][k] = true;
+    if (this.rows[i][j].updateIfSingle()) {
+      this.score += 10000
+      this.score -= 100;
+    }
   }
 
   updateSingles() {
@@ -100,13 +126,6 @@ export class Board {
 
   export() {
     return this.rows.map(i => i.map(j => j.export() ));
-  }
-
-  constructor() {
-    window.board = this;
-    this.createRows();
-    this.setExample();
-    this.autoNotate();
   }
 
   valueInRow(i, value) {
@@ -153,14 +172,26 @@ export class Board {
     //}
   }
 
+  isCorrect(i,j,k) {
+    return parseInt(this.answer[i][j]) === k;
+  }
+
   setExample() {
-    const easyexample = "000830057008500600130002080802390700600100032057204090060410370073908060000760400";
-    const hardExample = "070000000080400070000053040009100730700002000000004902500009800004500000103020004"
-    const example = easyexample;
+    const mediumExample = ["200006000195304087800170004000000340000810020000007090670000030000050070958003002","247586913195324687863179254781962345439815726526437891674291538312658479958743162",449,4,false];
+    const example = mediumExample;
+    this.answer = {};
+    for (let i = 0; i < 9; i++) {
+      this.answer[i] = [];
+      for (let j = 0; j < 9; j++) {
+        this.answer[i][j] = parseInt(mediumExample[1][i*9+j]);
+      }
+    }
+
+
     for (let i = 0; i < 9; i++) {
       for (let j = 0; j < 9; j++) {
           const idx = i*9+j;
-          const val = parseInt(example[idx]);
+          const val = parseInt(example[0][idx]);
           if (val !== 0) {
             this.setVal(i,j, parseInt(val));
           }

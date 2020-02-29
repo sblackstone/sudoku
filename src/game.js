@@ -126,7 +126,8 @@ class Game extends React.Component {
       selectedSquare: [-1,-1],
       mode: "setMarks", // vs setValues
       exportBoard:  this.board.export(),
-      selectedBox: -1
+      selectedBox: -1,
+      score: 0
     }
 
   }
@@ -137,7 +138,6 @@ class Game extends React.Component {
         const k = e[0]._index;
         console.log(i,j,k);
         this.board.removeMarkClick(i,j,k+1,false);
-        this.board.rows[i][j].updateIfSingle();
       } catch (err) {
         console.log(err);
       }
@@ -154,11 +154,13 @@ class Game extends React.Component {
   }
 
   updateStateBoard() {
+
     this.board.autoNotate();
 
     this.setState({
-      exportBoard: this.board.export()
-    })
+      exportBoard: this.board.export(),
+      score: this.board.score
+    });
   }
 
   onModeToggleClick(e) {
@@ -206,6 +208,7 @@ class Game extends React.Component {
   render() {
     return (
       <div className="game">
+        <div className="score">{this.state.score}</div>
         <table className="board">
           <tbody>
             <GameCells onElementsClick={this.onElementsClick.bind(this)} selectedSquare={this.state.selectedSquare} onSquareClick={this.onSquareClick.bind(this)} board={this.state.exportBoard} selectedBox={this.state.selectedBox} />
