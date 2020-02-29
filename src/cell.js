@@ -15,30 +15,36 @@ export class Cell {
 
   get marks()  { return this.__marks;  };
 
-  updateIfSingle() {
-    let count = 0;
-    let last = 0;
+  getSingleCandidate() {
+    let last = -1;
     for (let i = 1; i < 10; i++) {
       if (this.marks[i]) {
-        last = i;
-        count += 1;
+        if (last != -1) {
+          return -1;
+        } else {
+          last = i;
+        }
       }
     }
+    return last;
+  }
 
-    if (count === 1) {
+  isSingle() {
+    return this.getSingleCandidate() > -1;
+  }
+
+  updateIfSingle() {
+    const last = this.getSingleCandidate();
+    if (last > -1) {
       this.value = last;
       return true;
     } else {
       return false;
     }
-
-
-
-
   }
 
   export() {
-    return { value: this.value, marks: this.marks };
+    return { value: this.value, marks: this.marks, isSingle: this.isSingle() };
   }
 
   setMark(i, v) {

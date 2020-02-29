@@ -47,8 +47,10 @@ const Marks = function(props) {
       tooltips: { enabled: false }
     }
 
+    const singleClass = props.cell.isSingle ? "single" : "";
+    
     return (
-      <div className="marks">
+      <div className={`${singleClass} marks`}>
         <Doughnut data={data} options={opts} onElementsClick={props.onElementsClick} width="2vmin" height="2vmin" />
       </div>
     )
@@ -62,7 +64,7 @@ const GameCellValue = function(props) {
     return (<div className="cell-value"></div>);
   } else {
     return (
-      <Marks marks={props.cell.marks} onElementsClick={props.onElementsClick} />
+      <Marks marks={props.cell.marks} {...props} />
     )
   }
 }
