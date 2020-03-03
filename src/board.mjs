@@ -33,9 +33,6 @@ export class Board {
     this.createRows();
     this.setExample();
     this.autoNotate();
-    while (this.updateSingles()) {
-
-    }
   }
 
 
@@ -112,7 +109,6 @@ export class Board {
     this.__manual_removals[i][j][k] = true;
     if (this.rows[i][j].updateIfSingle()) {
       this.score += 10000
-      this.score -= 100;
     }
   }
 
@@ -169,9 +165,7 @@ export class Board {
         }
       }
     }
-    //if (this.updateSingles()) {
-    //  this.autoNotate();
-    //}
+
   }
 
   isCorrect(i,j,k) {
@@ -187,7 +181,7 @@ export class Board {
     for (let i = 0; i < 9; i++) {
       this.answer[i] = [];
       for (let j = 0; j < 9; j++) {
-        this.answer[i][j] = parseInt(mediumExample[1][i*9+j]);
+        this.answer[i][j] = parseInt(example[1][i*9+j]);
       }
     }
 
